@@ -7,7 +7,7 @@ open module com.algonquincollege.cst8277.rest.orderSystem {
     requires java.annotation;
     requires java.persistence;
     requires java.transaction;
-    requires java.ws.rs;
+    requires javax.ws.rs;
     requires jakarta.servlet.api;
     requires jakarta.ejb.api;
     requires jakarta.inject.api;

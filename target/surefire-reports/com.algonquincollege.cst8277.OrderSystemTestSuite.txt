@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.algonquincollege.cst8277.OrderSystemTestSuite
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.944 s <<< FAILURE! - in com.algonquincollege.cst8277.OrderSystemTestSuite
+com.algonquincollege.cst8277.OrderSystemTestSuite.test01_all_customers_with_adminrole  Time elapsed: 1.727 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: is <200>
+     but: was <401>
+	at com.algonquincollege.cst8277.rest.orderSystem@0.0.1-SNAPSHOT/com.algonquincollege.cst8277.OrderSystemTestSuite.test01_all_customers_with_adminrole(OrderSystemTestSuite.java:100)
+
