@@ -16,9 +16,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
 *
@@ -43,8 +45,9 @@ public class OrderPojo extends PojoBase implements Serializable {
     }
     public void setDescription(String description) {
         this.description = description;
-    }
-
+	}
+	@JsonManagedReference
+	@OneToMany(mappedBy = "owningOrder")
 	public List<OrderLinePojo> getOrderlines() {
 		return this.orderlines;
 	}

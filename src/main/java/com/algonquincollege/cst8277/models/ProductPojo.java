@@ -12,6 +12,10 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -19,6 +23,8 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 *
 * Description: model for the Product object
 */
+@Entity
+@Table(name = "PRODUCTS")
 public class ProductPojo extends PojoBase implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -51,6 +57,7 @@ public class ProductPojo extends PojoBase implements Serializable {
     }
     
     @JsonInclude(Include.NON_NULL)
+    @ManyToMany(mappedBy = "products")
     public Set<StorePojo> getStores() {
         return stores;
     }

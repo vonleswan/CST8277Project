@@ -29,7 +29,9 @@ import com.algonquincollege.cst8277.models.SecurityUser;
  * Stateless Session bean should also be a Singleton
  */
 public class CustomIdentityStoreJPAHelper {
+    public static final String CUSTOMER_PU = "20f-groupProject-PU";
 
+    @PersistenceContext(name = CUSTOMER_PU)
     protected EntityManager em;
 
     public SecurityUser findUserByName(String username) {

@@ -55,7 +55,7 @@ import com.algonquincollege.cst8277.models.StorePojo;
 public class CustomerService implements Serializable {
     private static final long serialVersionUID = 1L;
     
-    public static final String CUSTOMER_PU = "acmeCustomers-PU";
+    public static final String CUSTOMER_PU = "20f-groupProject-PU";
 
     @PersistenceContext(name = CUSTOMER_PU)
     protected EntityManager em;
