@@ -39,6 +39,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import javax.transaction.Transactional;
+import static com.algonquincollege.cst8277.models.CustomerPojo.ALL_CUSTOMERS_QUERY_NAME;
 
 import com.algonquincollege.cst8277.models.AddressPojo;
 import com.algonquincollege.cst8277.models.CustomerPojo;
@@ -66,7 +67,7 @@ public class CustomerService implements Serializable {
     //TODO
 
     public List<CustomerPojo> getAllCustomers() {
-        return null;
+        return em.createQuery(ALL_CUSTOMERS_QUERY_NAME, CustomerPojo.class).getResultList();
     }
 
     public CustomerPojo getCustomerById(int custPK) {

@@ -49,7 +49,7 @@ import com.algonquincollege.cst8277.models.SecurityUser;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerResource {
-
+    @EJB
     protected CustomerService customerServiceBean;
 
     @Inject
@@ -58,6 +58,7 @@ public class CustomerResource {
     @Inject
     protected SecurityContext sc;
 
+    @GET
     public Response getCustomers() {
         servletContext.log("retrieving all customers ...");
         List<CustomerPojo> custs = customerServiceBean.getAllCustomers();
