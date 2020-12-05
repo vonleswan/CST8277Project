@@ -37,10 +37,12 @@ public class CustomIdentityStoreJPAHelper {
     public SecurityUser findUserByName(String username) {
         SecurityUser user = null;
         try {
-            //TODO
+            TypedQuery<SecurityUser> securityUserTypedQuery = em.createNamedQuery(SECURITY_USER_BY_NAME_QUERY, SecurityUser.class);
+            securityUserTypedQuery.setParameter(PARAM1, username);
+            user = securityUserTypedQuery.getSingleResult();
         }
         catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         return user;
     }
@@ -56,11 +58,11 @@ public class CustomIdentityStoreJPAHelper {
 
     @Transactional
     public void saveSecurityUser(SecurityUser user) {
-        //TODO
+        em.persist(user);
     }
 
     @Transactional
     public void saveSecurityRole(SecurityRole role) {
-        //TODO
+        em.persist(role);
     }
 }

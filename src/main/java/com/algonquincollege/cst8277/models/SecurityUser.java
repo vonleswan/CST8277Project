@@ -19,10 +19,20 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import javax.persistence.*;
+
+import static com.algonquincollege.cst8277.models.SecurityUser.SECURITY_USER_BY_NAME_QUERY;
+import static com.algonquincollege.cst8277.models.SecurityUser.USER_FOR_OWNING_CUST_QUERY;
+
 /**
  * User class used for (JSR-375) Java EE Security authorization/authentication
  */
-
+@Entity
+@Table(name = "SECURITY_USER")
+@NamedQueries({
+        @NamedQuery(name = USER_FOR_OWNING_CUST_QUERY, query = "SELECT user from SecurityUser user where user.customer.id =:param1"),
+        @NamedQuery(name = SECURITY_USER_BY_NAME_QUERY, query = "SELECT user FROM SecurityUser user WHERE user.username =: param1")
+})
 public class SecurityUser implements Serializable, Principal {
     /** explicit set serialVersionUID */
     private static final long serialVersionUID = 1L;
@@ -42,6 +52,9 @@ public class SecurityUser implements Serializable, Principal {
         super();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_ID")
     public int getId() {
         return id;
     }
@@ -66,6 +79,10 @@ public class SecurityUser implements Serializable, Principal {
     
     @JsonInclude(Include.NON_NULL)
     @JsonSerialize(using = SecurityRoleSerializer.class)
+    @ManyToMany(targetEntity = SecurityRole.class, cascade = CascadeType.PERSIST)
+    @JoinTable(name="SECURITY_USER_SECURITY_ROLE",
+            joinColumns=@JoinColumn(name="USER_ID", referencedColumnName="USER_ID"),
+            inverseJoinColumns=@JoinColumn(name="ROLE_ID", referencedColumnName="ROLE_ID"))
     public Set<SecurityRole> getRoles() {
         return roles;
     }
@@ -73,6 +90,8 @@ public class SecurityUser implements Serializable, Principal {
         this.roles = roles;
     }
 
+    @OneToOne
+    @JoinColumn(name = "CUST_ID")
     public CustomerPojo getCustomer() {
         return cust;
     }
@@ -107,10 +126,7 @@ public class SecurityUser implements Serializable, Principal {
             return false;
         }
         SecurityUser other = (SecurityUser)obj;
-        if (id != other.id) {
-            return false;
-        }
-        return true;
+        return id == other.id;
     }
 
 }
