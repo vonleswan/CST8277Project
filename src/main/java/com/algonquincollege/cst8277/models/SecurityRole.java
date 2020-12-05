@@ -14,10 +14,15 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import javax.persistence.*;
+
 
 /**
  * Role class used for (JSR-375) Java EE Security authorization/authentication
  */
+@Entity
+@Table(name="SECURITY_ROLE")
+@NamedQuery(name = SecurityRole.ROLE_BY_NAME_QUERY, query = "SELECT role FROM SecurityRole role WHERE role.roleName =: param1")
 public class SecurityRole implements Serializable {
     /** explicit set serialVersionUID */
     private static final long serialVersionUID = 1L;
@@ -32,6 +37,9 @@ public class SecurityRole implements Serializable {
         super();
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ROLE_ID")
     public int getId() {
         return id;
     }
@@ -47,6 +55,7 @@ public class SecurityRole implements Serializable {
     }
 
     @JsonInclude(Include.NON_NULL)
+    @ManyToMany(mappedBy="roles")
     public Set<SecurityUser> getUsers() {
         return users;
     }
@@ -77,9 +86,6 @@ public class SecurityRole implements Serializable {
             return false;
         }
         SecurityRole other = (SecurityRole)obj;
-        if (id != other.id) {
-            return false;
-        }
-        return true;
+        return id == other.id;
     }
 }
