@@ -27,11 +27,11 @@ import static com.algonquincollege.cst8277.models.SecurityUser.USER_FOR_OWNING_C
 /**
  * User class used for (JSR-375) Java EE Security authorization/authentication
  */
-@Entity
+@Entity(name = "SecurityUser")
 @Table(name = "SECURITY_USER")
 @NamedQueries({
-        @NamedQuery(name = USER_FOR_OWNING_CUST_QUERY, query = "SELECT user from SecurityUser user where user.customer.id =:param1"),
-        @NamedQuery(name = SECURITY_USER_BY_NAME_QUERY, query = "SELECT user FROM SecurityUser user WHERE user.username =: param1")
+        @NamedQuery(name = USER_FOR_OWNING_CUST_QUERY, query = "SELECT user FROM SecurityUser user WHERE user.customer.id = :param1"),
+        @NamedQuery(name = SECURITY_USER_BY_NAME_QUERY, query = "SELECT user FROM SecurityUser user WHERE user.username = :param1")
 })
 public class SecurityUser implements Serializable, Principal {
     /** explicit set serialVersionUID */

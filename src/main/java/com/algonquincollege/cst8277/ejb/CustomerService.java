@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -40,9 +41,11 @@ import javax.persistence.criteria.Root;
 import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import javax.transaction.Transactional;
 import static com.algonquincollege.cst8277.models.CustomerPojo.ALL_CUSTOMERS_QUERY_NAME;
-
+import static com.algonquincollege.cst8277.models.StorePojo.ALL_STORES_QUERY_NAME;
+import static com.algonquincollege.cst8277.models.OrderPojo.ALL_ORDERS_QUERY_NAME;
 import com.algonquincollege.cst8277.models.AddressPojo;
 import com.algonquincollege.cst8277.models.CustomerPojo;
+import com.algonquincollege.cst8277.models.OrderPojo;
 import com.algonquincollege.cst8277.models.ProductPojo;
 import com.algonquincollege.cst8277.models.SecurityRole;
 import com.algonquincollege.cst8277.models.SecurityUser;
@@ -52,6 +55,7 @@ import com.algonquincollege.cst8277.models.StorePojo;
 /**
  * Stateless Singleton Session Bean - CustomerService
  */
+@Stateless
 @Singleton
 public class CustomerService implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -63,20 +67,19 @@ public class CustomerService implements Serializable {
 
     @Inject
     protected Pbkdf2PasswordHash pbAndjPasswordHash;
-    
-    //TODO
 
     public List<CustomerPojo> getAllCustomers() {
-        return em.createQuery(ALL_CUSTOMERS_QUERY_NAME, CustomerPojo.class).getResultList();
+        return em.createNamedQuery(ALL_CUSTOMERS_QUERY_NAME, CustomerPojo.class).getResultList();
     }
 
     public CustomerPojo getCustomerById(int custPK) {
-        return null;
+        return em.find(CustomerPojo.class, custPK);
     }
     
     @Transactional
     public CustomerPojo persistCustomer(CustomerPojo newCustomer) {
-        return null;
+        em.persist(newCustomer);
+        return newCustomer;
     }
     
     @Transactional
@@ -129,15 +132,15 @@ public class CustomerService implements Serializable {
     }
 
     public ProductPojo getProductById(int prodId) {
-        return null;
+        return em.find(ProductPojo.class, prodId);
     }
 
     public List<StorePojo> getAllStores() {
-        return null;
+        return em.createNamedQuery(ALL_STORES_QUERY_NAME, StorePojo.class).getResultList();
     }
 
     public StorePojo getStoreById(int id) {
-        return null;
+        return em.find(StorePojo.class, id);
     }
     
     /*
@@ -145,5 +148,12 @@ public class CustomerService implements Serializable {
     public OrderPojo getAllOrders ... getOrderbyId ... build Orders with OrderLines ...
      
     */
+    public List<OrderPojo> getAllOrders(){
+        return em.createNamedQuery(ALL_ORDERS_QUERY_NAME, OrderPojo.class).getResultList();
+    }
+
+    public OrderPojo getOrderById(int id){
+        return em.find(OrderPojo.class, id);
+    }
 
 }

@@ -20,9 +20,9 @@ import javax.persistence.*;
 /**
  * Role class used for (JSR-375) Java EE Security authorization/authentication
  */
-@Entity
+@Entity(name = "SecurityRole")
 @Table(name="SECURITY_ROLE")
-@NamedQuery(name = SecurityRole.ROLE_BY_NAME_QUERY, query = "SELECT role FROM SecurityRole role WHERE role.roleName =: param1")
+@NamedQuery(name = SecurityRole.ROLE_BY_NAME_QUERY, query = "SELECT role FROM SecurityRole role WHERE role.roleName = :param1")
 public class SecurityRole implements Serializable {
     /** explicit set serialVersionUID */
     private static final long serialVersionUID = 1L;

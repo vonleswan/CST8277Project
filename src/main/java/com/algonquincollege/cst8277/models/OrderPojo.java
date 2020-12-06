@@ -16,9 +16,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import static com.algonquincollege.cst8277.models.OrderPojo.ALL_ORDERS_QUERY_NAME;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -26,12 +27,13 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 *
 * Description: model for the Order object
 */
-@Entity(name="ORDER")
+@Entity(name="Order")
 @Table(name="ORDER_TBL")
 @AttributeOverride(name = "id", column = @Column(name="ORDER_ID"))
+@NamedQuery(name = ALL_ORDERS_QUERY_NAME, query = "SELECT c FROM Order c")
 public class OrderPojo extends PojoBase implements Serializable {
     private static final long serialVersionUID = 1L;
-
+	public static final String ALL_ORDERS_QUERY_NAME = "allOrders";
     protected String description;
     protected List<OrderLinePojo> orderlines;
     protected CustomerPojo owningCustomer;

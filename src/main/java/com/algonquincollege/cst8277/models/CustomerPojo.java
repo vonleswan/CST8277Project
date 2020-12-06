@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity(name = "Customer")
 @Table(name = "CUSTOMER")
 @AttributeOverride(name = "id", column = @Column(name="CUST_ID"))
-@NamedQuery(name = ALL_CUSTOMERS_QUERY_NAME, query = "select c from Customer c")
+@NamedQuery(name = ALL_CUSTOMERS_QUERY_NAME, query = "SELECT c FROM Customer c")
 public class CustomerPojo extends PojoBase implements Serializable {
     private static final long serialVersionUID = 1L;
 

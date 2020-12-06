@@ -17,6 +17,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -28,6 +29,8 @@ import com.algonquincollege.cst8277.models.SecurityUser;
 /*
  * Stateless Session bean should also be a Singleton
  */
+@Stateless
+@Singleton
 public class CustomIdentityStoreJPAHelper {
     public static final String CUSTOMER_PU = "20f-groupProject-PU";
 
