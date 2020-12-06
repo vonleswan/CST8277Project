@@ -44,6 +44,7 @@ import com.algonquincollege.cst8277.ejb.CustomerService;
 import com.algonquincollege.cst8277.models.AddressPojo;
 import com.algonquincollege.cst8277.models.CustomerPojo;
 import com.algonquincollege.cst8277.models.SecurityUser;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Path(CUSTOMER_RESOURCE_NAME)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -65,7 +66,7 @@ public class CustomerResource {
         Response response = Response.ok(custs).build();
         return response;
     }
-
+ 
     public Response getCustomerById(@PathParam(RESOURCE_PATH_ID_ELEMENT) int id) {
         servletContext.log("try to retrieve specific customer " + id);
         Response response = null;
@@ -93,6 +94,8 @@ public class CustomerResource {
     }
 
     @Transactional
+    @POST
+    @Consumes
     public Response addCustomer(CustomerPojo newCustomer) {
       Response response = null;
       CustomerPojo newCustomerWithIdTimestamps = customerServiceBean.persistCustomer(newCustomer);
@@ -102,6 +105,7 @@ public class CustomerResource {
       return response;
     }
 
+    @Transactional
     public Response addAddressForCustomer(@PathParam(RESOURCE_PATH_ID_ELEMENT) int id, AddressPojo newAddress) {
       Response response = null;
       CustomerPojo updatedCustomer = customerServiceBean.setAddressFor(id, newAddress);

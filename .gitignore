@@ -8,7 +8,12 @@
 /httpRequests/
 /.vscode/
 # Ignoring deployment specific directories
-.classpath
-.project
-.settings/
-*/target/**
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse
