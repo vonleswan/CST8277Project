@@ -4,7 +4,7 @@
  *
  * @author (original) Mike Norman
  * 
- * update by : I. Am. A. Student 040nnnnnnn
+ * update by : Anton Hrytsyk, Vaughan Alex, Patrick Quinty
  */
 package com.algonquincollege.cst8277.models;
 
@@ -59,6 +59,10 @@ public abstract class AddressPojo extends PojoBase implements Serializable {
         super();
     }
 
+    /**
+     * City getter
+     * @return
+     */
     public String getCity() {
         return city;
     }
@@ -66,6 +70,10 @@ public abstract class AddressPojo extends PojoBase implements Serializable {
         this.city = city;
     }
 
+    /**
+     * City getter
+     * @return
+     */
     public String getCountry() {
         return country;
     }
@@ -73,6 +81,10 @@ public abstract class AddressPojo extends PojoBase implements Serializable {
         this.country = country;
     }
 
+    /**
+     * City getter
+     * @return
+     */
     public String getPostal() {
         return postal;
     }

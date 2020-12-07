@@ -15,7 +15,7 @@ servers:
                 default: "8080"
             }
             contextRoot: {
-                default: "rest-orderSystem"
+                default: "rest-orderSystem-0.0.1-SNAPSHOT"
             }
             basePath: {
                 default: "api/v1"

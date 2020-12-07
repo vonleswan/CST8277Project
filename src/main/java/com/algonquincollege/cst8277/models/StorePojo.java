@@ -3,8 +3,8 @@
  * Course materials (20F) CST 8277
  *
  * @author (original) Mike Norman
- * 
- * update by : Vaughan Alexander 040937187
+ *
+ * update by : Anton Hrytsyk, Vaughan Alex, Patrick Quinty
  */
 package com.algonquincollege.cst8277.models;
 
