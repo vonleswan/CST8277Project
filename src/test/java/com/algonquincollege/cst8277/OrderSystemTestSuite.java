@@ -55,10 +55,7 @@ public class OrderSystemTestSuite {
 
     static final String APPLICATION_CONTEXT_ROOT = "rest-orderSystem";
     static final String HTTP_SCHEMA = "http";
-    static final String HOST = "localhost";
-    
-    //TODO - if you changed your Payara's default port (to say for example 9090)
-    //       your may need to alter this constant
+    static final String HOST = "localhost";    
     static final int PORT = 8080;
 
     // test fixture(s)

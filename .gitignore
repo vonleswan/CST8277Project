@@ -7,4 +7,13 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 /.vscode/
-
+# Ignoring deployment specific directories
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse

@@ -4,7 +4,7 @@
  *
  * @author (original) Mike Norman
  * 
- * update by : I. Am. A. Student 040nnnnnnn
+ * update by : Vaughan Alexander 040937187
  */
 package com.algonquincollege.cst8277.models;
 
@@ -18,8 +18,9 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
+import static com.algonquincollege.cst8277.models.StorePojo.ALL_STORES_QUERY_NAME;
 import com.algonquincollege.cst8277.rest.ProductSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -27,12 +28,13 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 *
 * Description: model for the Store object
 */
-@Entity
+@Entity(name = "Stores")
 @Table(name = "STORES")
 @AttributeOverride(name = "id", column = @Column(name = "STORE_ID"))
+@NamedQuery(name = ALL_STORES_QUERY_NAME, query = "SELECT c FROM Stores c")
 public class StorePojo extends PojoBase implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+    public static final String ALL_STORES_QUERY_NAME = "allStores";
     protected String storeName;
     protected Set<ProductPojo> products = new HashSet<>();
 
