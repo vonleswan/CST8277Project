@@ -5,7 +5,7 @@
  *
  * @date 2020 10
  *
- * (Modified) @author Student Name
+ * update by : Anton Hrytsyk, Vaughan Alex, Patrick Quinty
  */
 package com.algonquincollege.cst8277;
 

@@ -3,8 +3,8 @@
  * Course materials (20F) CST 8277
  *
  * @author (original) Mike Norman
- * 
- * update by : I. Am. A. Student 040nnnnnnn
+ *
+ * update by : Anton Hrytsyk 040938383
  */
 package com.algonquincollege.cst8277.security;
 
@@ -37,6 +37,11 @@ public class CustomIdentityStoreJPAHelper {
     @PersistenceContext(name = CUSTOMER_PU)
     protected EntityManager em;
 
+    /**
+     * Find user by name
+     * @param username to search for
+     * @return found user
+     */
     public SecurityUser findUserByName(String username) {
         SecurityUser user = null;
         try {
@@ -50,6 +55,11 @@ public class CustomIdentityStoreJPAHelper {
         return user;
     }
 
+    /**
+     * search for a role
+     * @param username role name
+     * @return found role
+     */
     public Set<String> findRoleNamesForUser(String username) {
         Set<String> roleNames = emptySet();
         SecurityUser securityUser = findUserByName(username);
@@ -58,12 +68,20 @@ public class CustomIdentityStoreJPAHelper {
         }
         return roleNames;
     }
-
+    
+    /**
+     * persist security user
+     * @param user security user
+     */
     @Transactional
     public void saveSecurityUser(SecurityUser user) {
         em.persist(user);
     }
-
+    
+    /**
+     * Persist security role
+     * @param role
+     */
     @Transactional
     public void saveSecurityRole(SecurityRole role) {
         em.persist(role);

@@ -1,3 +1,6 @@
+/**
+ *  update by : Anton Hrytsyk, Vaughan Alex, Patrick Quinty
+ */
 package com.algonquincollege.cst8277.test;
 
 import javax.persistence.EntityManagerFactory;

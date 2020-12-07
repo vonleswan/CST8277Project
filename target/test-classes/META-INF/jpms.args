@@ -1,0 +1,4 @@
+--patch-module
+com.algonquincollege.cst8277.rest.orderSystem=_
+--add-reads
+com.algonquincollege.cst8277.rest.orderSystem=ALL-UNNAMED

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.algonquincollege.cst8277.OrderSystemTestSuite
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.397 s <<< FAILURE! - in com.algonquincollege.cst8277.OrderSystemTestSuite
+com.algonquincollege.cst8277.OrderSystemTestSuite.test01_all_customers_with_adminrole  Time elapsed: 0.897 s  <<< ERROR!
+javax.ws.rs.ProcessingException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.algonquincollege.cst8277.rest.orderSystem@0.0.1-SNAPSHOT/com.algonquincollege.cst8277.OrderSystemTestSuite.test01_all_customers_with_adminrole(OrderSystemTestSuite.java:96)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at com.algonquincollege.cst8277.rest.orderSystem@0.0.1-SNAPSHOT/com.algonquincollege.cst8277.OrderSystemTestSuite.test01_all_customers_with_adminrole(OrderSystemTestSuite.java:96)
+
